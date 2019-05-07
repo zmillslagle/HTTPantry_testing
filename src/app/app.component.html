@@ -6,8 +6,14 @@
     <div class='panel-heading'>
             {{pageTitle}}
     </div>
-    <button class='btn btn-primary'
-        (click)='sayHi()'>
-        {{showImage ? 'Hide' : 'Show'}} Image
-    </button>
+    <h3>{{time/100}} seconds</h3>
+    <p-button label="Load Image"
+        *ngIf="!hasImage"
+        (onClick)='showImage()'></p-button>
+    <p-progressSpinner *ngIf="isLoading"></p-progressSpinner>
+    <p *ngIf="isLoading"></p>
+    <img [src]="fileURL"
+        *ngIf="hasImage"
+        height="1000"
+        (load)="imageLoad()">
 </div>
